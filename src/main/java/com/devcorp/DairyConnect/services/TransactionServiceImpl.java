@@ -31,6 +31,10 @@ public class TransactionServiceImpl implements TransactionService{
             return new ResponseEntity<Transactions>(HttpStatus.BAD_REQUEST);
         }else {
             Users user = users.get();
+            double amount = user.getBalance();
+            double earnings = transactions.getLiters()*40;
+            double addedAmount = amount + earnings;
+            user.setBalance(addedAmount);
             transactions.setUsers(user);
         return new ResponseEntity<Transactions>(transactionRepository.save(transactions),HttpStatus.CREATED);
         }
