@@ -19,6 +19,7 @@ public class Transactions {
     private long id;
     private String transactionId;
     private double liters;
+    private boolean status;
     private Date date = new Date(System.currentTimeMillis());
     @ManyToOne
     @JsonIgnore
