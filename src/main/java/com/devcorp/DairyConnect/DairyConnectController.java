@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/dairyconnect")
@@ -39,8 +40,12 @@ public class DairyConnectController {
         return userService.searchUser(uuid);
     }
     @GetMapping("/transactions/{transactionId}")
-    public ResponseEntity<String> getSingleTransaction(@PathVariable String transactionId){
+    public Optional<Transactions> getSingleTransaction(@PathVariable String transactionId){
         return transactionService.searchTransaction(transactionId);
+    }
+    @GetMapping("/{uuid}/transactions")
+    public List<Transactions> getTransactionWithuuid(@PathVariable String uuid){
+        return transactionService.getTransactionWithUuid(uuid);
     }
     @GetMapping("/users/{ref}")
     public ResponseEntity<String> getSingleWithdrawal(@PathVariable String ref){

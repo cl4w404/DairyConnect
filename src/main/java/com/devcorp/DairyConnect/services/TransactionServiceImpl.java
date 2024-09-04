@@ -41,14 +41,24 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public ResponseEntity<String> searchTransaction(String transactionId) {
+
+    public Optional<Transactions> searchTransaction(String transactionId) {
         Optional<Transactions> transactions1 = this.transactionRepository.findByTransactionId(transactionId);
         if(transactions1.isPresent()){
             Transactions transaction = transactions1.get();
-            transactionRepository.findByTransactionId(transactionId);
-          return  new ResponseEntity<>("Succesfully Retrived", HttpStatus.OK);
+
+          return  transactionRepository.findByTransactionId(transactionId);
         }else{
-            return  new ResponseEntity<>("No Transaction With The Id",HttpStatus.NOT_FOUND);
+            return  null;
+        }
+    }
+    public List<Transactions> getTransactionWithUuid(String uuid){
+        Optional<Users> user = this.userRepository.findByUuid(uuid);
+        if (user.isPresent()){
+            Users users = user.get();
+            return users.getTransactions();
+        }else {
+            return null;
         }
     }
 }
