@@ -61,14 +61,7 @@ public class TransactionServiceImpl implements TransactionService{
             return null;
         }
     }
-    public ResponseEntity<Optional<Transactions>> deleteTransaction(long id){
-        Optional<Transactions> transactions = transactionRepository.findById(id);
-        if(transactions.isPresent()){
-            return new ResponseEntity<Optional<Transactions>>(transactionRepository.findById(id),HttpStatus.OK);
-        }else {
-            return null;
-        }
-
-
+    public Optional<Transactions> deleteTransaction(String transactionalId){
+        return transactionRepository.deleteByTransaction(transactionalId);
     }
 }

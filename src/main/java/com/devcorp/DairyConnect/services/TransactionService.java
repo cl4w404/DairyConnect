@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public interface TransactionService {
       public ResponseEntity<List<Transactions>> getTransactions();
-      public ResponseEntity<Optional<Transactions>> deleteTransaction(long id);
+      public Optional<Transactions> deleteTransaction(String transactionalId);
       public List<Transactions> getTransactionWithUuid(String uuid);
       public ResponseEntity<Transactions> saveTransaction(Transactions transactions,String uuid);
       public Optional<Transactions> searchTransaction(String transactionId);
