@@ -92,7 +92,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     // Method to delete all transactions and deactivate user
-    public ResponseEntity<String> deleteAllTransactionsForUser(String uuid) {
+    @Override
+    public void deleteAllTransactionsForUser(String uuid) {
         Optional<Users> user = this.userRepository.findByUuid(uuid);
 
         if (user.isPresent()) {
@@ -106,9 +107,9 @@ public class TransactionServiceImpl implements TransactionService {
             foundUser.setActive(false); // Assuming there's a field "active" to indicate if the user is active
             userRepository.save(foundUser);
 
-            return new ResponseEntity<>("User deactivated and all transactions deleted successfully", HttpStatus.OK);
+            new ResponseEntity<>("User deactivated and all transactions deleted successfully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+            new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
         }
     }
 }

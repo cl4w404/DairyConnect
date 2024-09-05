@@ -14,4 +14,5 @@ public interface TransactionService {
       public List<Transactions> getTransactionWithUuid(String uuid);
       public ResponseEntity<Transactions> saveTransaction(Transactions transactions, String uuid);
       public Optional<Transactions> searchTransaction(String transactionId);
+      void deleteAllTransactionsForUser(String uuid);
 }
