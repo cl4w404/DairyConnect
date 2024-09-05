@@ -64,9 +64,9 @@ public class DairyConnectController {
     public ResponseEntity<String> addWithdrawals(@PathVariable String uuid,@RequestBody UserWithdrawals userWithdrawals){
         return userWithdrawlsService.saveWithdrawal(userWithdrawals, uuid);
     }
-    @DeleteMapping("/{transactionId}/transaction")
-    public Optional<Transactions> deleteTransaction(@PathVariable String transactionId){
-        return transactionService.deleteTransaction(transactionId);
+    @DeleteMapping("/{id}/transaction")
+    public ResponseEntity<String> deleteTransaction(@PathVariable long id){
+        return transactionService.deleteTransaction(id);
     }
 
 }

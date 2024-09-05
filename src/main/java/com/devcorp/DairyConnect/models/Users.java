@@ -20,6 +20,7 @@ public class Users {
     private String uuid;
     private Date date = new Date(System.currentTimeMillis());
     private double balance;
+    private boolean active;
     @OneToMany(mappedBy = "users")
     private List<Transactions> transactions;
     @OneToMany(mappedBy = "users")
