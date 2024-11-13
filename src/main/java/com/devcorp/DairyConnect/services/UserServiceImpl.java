@@ -35,8 +35,9 @@ public class UserServiceImpl implements UserService{
         Optional<Users> user = this.userRepository.findByUuid(uuid);
 
         if (user.isPresent()) {
+            Users users = user.get();
             // Return the user details as JSON
-            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+            return new ResponseEntity<>(users, HttpStatus.OK);
         } else {
             // Informative error message if user is not found
             return new ResponseEntity<>("No user found with the provided UUID: " + uuid, HttpStatus.NOT_FOUND);
