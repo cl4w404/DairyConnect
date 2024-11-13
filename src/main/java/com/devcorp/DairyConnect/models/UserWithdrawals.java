@@ -19,6 +19,7 @@ public class UserWithdrawals {
     private double amount;
     private Date date = new Date(System.currentTimeMillis());
     private String ref;
+    private String type;
     @ManyToOne
     @JsonIgnore
     private Users users;
