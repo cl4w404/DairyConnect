@@ -36,7 +36,7 @@ public class  DairyConnectController {
         return userWithdrawlsService.getAllWithdrawals();
     }
     @GetMapping("/users/{uuid}")
-    public ResponseEntity<String> getSingleUser(@PathVariable String uuid){
+    public ResponseEntity<?> getSingleUser(@PathVariable String uuid){
         return userService.searchUser(uuid);
     }
     @GetMapping("/transactions/{transactionId}")

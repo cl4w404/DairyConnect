@@ -31,13 +31,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public ResponseEntity<String> searchUser(String uuid) {
+    public ResponseEntity<?> searchUser(String uuid) {
         Optional<Users> user = this.userRepository.findByUuid(uuid);
-        if(user.isPresent()){
-            userRepository.findByUuid(uuid);
-            return new ResponseEntity<>("Users Found", HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>("No User With The Uuid", HttpStatus.NOT_FOUND);
+
+        if (user.isPresent()) {
+            // Return the user details as JSON
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        } else {
+            // Informative error message if user is not found
+            return new ResponseEntity<>("No user found with the provided UUID: " + uuid, HttpStatus.NOT_FOUND);
         }
     }
 }

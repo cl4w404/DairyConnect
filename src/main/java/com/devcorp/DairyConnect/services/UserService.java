@@ -10,5 +10,5 @@ import java.util.List;
 public interface UserService {
     public ResponseEntity<List<Users>> getUsers();
     public ResponseEntity<Users> saveUser(Users user);
-    public ResponseEntity<String> searchUser(String uuid);
+    public ResponseEntity<?> searchUser(String uuid);
 }
