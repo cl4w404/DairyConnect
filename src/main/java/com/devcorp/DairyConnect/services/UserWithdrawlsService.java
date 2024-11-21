@@ -11,4 +11,6 @@ public interface UserWithdrawlsService {
     public ResponseEntity<String> searchWithdrawal(String ref);
 
     ResponseEntity<String> deleteWitdrawal(long id);
+
+    List<UserWithdrawals> getWithdrawalWithUuid(String uuid);
 }

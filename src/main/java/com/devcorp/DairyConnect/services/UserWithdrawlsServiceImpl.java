@@ -69,4 +69,9 @@ public class UserWithdrawlsServiceImpl implements UserWithdrawlsService{
             return new ResponseEntity<>("Withdrawal not found", HttpStatus.NOT_FOUND);
         }
     }
+    @Override
+    public List<UserWithdrawals> getWithdrawalWithUuid(String uuid) {
+        Optional<Users> user = this.userRepository.findByUuid(uuid);
+        return user.map(Users::getWithdrawals).orElse(null);
+    }
 }
