@@ -9,4 +9,6 @@ public interface UserWithdrawlsService {
     public ResponseEntity<List<UserWithdrawals>> getAllWithdrawals();
     public ResponseEntity<String> saveWithdrawal(UserWithdrawals userWithdrawals, String uuid);
     public ResponseEntity<String> searchWithdrawal(String ref);
+
+    ResponseEntity<String> deleteWitdrawal(long id);
 }

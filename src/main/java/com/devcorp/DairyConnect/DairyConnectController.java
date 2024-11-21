@@ -69,4 +69,9 @@ public class  DairyConnectController {
         return transactionService.deleteTransaction(id);
     }
 
+    @DeleteMapping("/{id}/withdrawals")
+    public ResponseEntity<String> deleteWithdrawal(@PathVariable long id){
+        return userWithdrawlsService.deleteWitdrawal(id);
+    }
+
 }

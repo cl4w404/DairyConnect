@@ -59,4 +59,14 @@ public class UserWithdrawlsServiceImpl implements UserWithdrawlsService{
             return new ResponseEntity<>("Withdrawal Not Found", HttpStatus.NOT_FOUND);
         }
     }
+    @Override
+    public ResponseEntity<String> deleteWitdrawal(long id) {
+        Optional<UserWithdrawals> transaction = this.userWithdrawlsRepository.findById(id);
+        if (transaction.isPresent()) {
+            userWithdrawlsRepository.deleteById(id);
+            return new ResponseEntity<>("Withdrawal deleted successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Withdrawal not found", HttpStatus.NOT_FOUND);
+        }
+    }
 }
